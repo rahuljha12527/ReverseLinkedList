@@ -1,0 +1,32 @@
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+node* rev_linkedlist_itr(node* head)
+{
+    if(head==NULL || head->next==NULL){
+        
+        return head;
+    }
+    
+    
+    node* rev=rev_linkedlist_itr(head->next);
+    
+    
+    node* tail=head->next;
+    
+    tail->next=head;
+    head->next=NULL;
+    
+    return rev;
+    
+}
+
