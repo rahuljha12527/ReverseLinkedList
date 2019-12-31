@@ -1,0 +1,45 @@
+// Following is the node structure
+/**************
+class node{
+public:
+    int data;
+    node * next;
+    node(int data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+***************/
+
+class Pair{
+    public:
+   node *head;
+   node *tail;
+};
+
+Pair reverseLL(node *head){
+    if(head==NULL || head->next==NULL){
+        Pair ans;
+        ans.head=head;
+        ans.tail=head;
+        
+        return ans;
+    }
+    
+    Pair smallAns=reverseLL(head->next);
+    smallAns.tail->next=head;
+    head->next=NULL;
+    
+    Pair ans;
+    ans.head=smallAns.head;
+    ans.tail=head;
+    
+    return ans;
+    
+}
+node *reverse_linked_list_rec(node *head)
+{
+    return reverseLL(head).head;
+}
+
+ 
